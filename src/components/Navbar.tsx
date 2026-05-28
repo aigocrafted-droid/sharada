@@ -25,6 +25,7 @@ export default function Navbar() {
     { name: 'Why Us', href: '#why-choose-us' },
     { name: 'Classes & Subjects', href: '#classes' },
     { name: 'Facilities', href: '#facilities' },
+    { name: 'Smart Quiz', href: '#quiz-game' },
     { name: 'Our Method', href: '#method' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'FAQ', href: '#faq' },

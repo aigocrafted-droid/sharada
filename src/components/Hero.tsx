@@ -55,7 +55,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs md:text-sm font-semibold tracking-wider uppercase backdrop-blur-sm shadow shadow-amber-400/5 cursor-pointer hover:bg-amber-400/15 transition-all"
             >
               <Sparkles className="w-4 h-4 text-amber-400" />
-              Admissions Open for 2026–27
+              Admissions Open for New Batch
             </motion.div>
 
             {/* Glowing Headings */}
@@ -204,7 +204,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute -right-4 -top-4 bg-slate-900 border border-amber-400/20 p-3 rounded-2xl hidden sm:flex items-center gap-3 shadow-xl max-w-[200px]">
+              <div className="absolute -right-4 top-16 bg-slate-900 border border-amber-400/20 p-3 rounded-2xl hidden sm:flex items-center gap-3 shadow-xl max-w-[200px] z-10">
                 <div className="w-10 h-10 rounded-xl bg-red-400/20 flex items-center justify-center border border-red-500/20">
                   <ShieldCheck className="w-5 h-5 text-red-400" />
                 </div>

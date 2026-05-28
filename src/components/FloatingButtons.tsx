@@ -53,7 +53,7 @@ export default function FloatingButtons() {
               className="bg-red-600 hover:bg-red-700 text-white font-sans text-xs md:text-sm font-bold py-3 px-5 rounded-full flex items-center gap-2 border border-red-500/30 transform active:scale-95 transition-all shadow-lg cursor-pointer"
             >
               <ClipboardList className="w-4 h-4" />
-              <span>Enroll Open (2026-27)</span>
+              <span>Enrollment Open</span>
             </button>
           </motion.div>
         )}

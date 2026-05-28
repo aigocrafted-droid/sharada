@@ -22,6 +22,8 @@ export default function AdmissionForm() {
   const [submitted, setSubmitted] = useState(false);
   const [localInquiries, setLocalInquiries] = useState<InquiryLog[]>([]);
 
+  const [showDirectSuccessToast, setShowDirectSuccessToast] = useState(false);
+
   useEffect(() => {
     // Load previously logged local storage enquiries if any
     try {
@@ -32,6 +34,16 @@ export default function AdmissionForm() {
     } catch (e) {
       console.error("Local storage lookup failed safely.", e);
     }
+
+    // Support default message based on button click from other components via custom event
+    const handleFillInquiry = (e: Event) => {
+      const customEvent = e as CustomEvent<{ message: string }>;
+      if (customEvent.detail && customEvent.detail.message) {
+        setMessage(customEvent.detail.message);
+      }
+    };
+    window.addEventListener('fill-admission-message', handleFillInquiry);
+    return () => window.removeEventListener('fill-admission-message', handleFillInquiry);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -59,12 +71,8 @@ export default function AdmissionForm() {
       console.error(err);
     }
 
-    setSubmitted(true);
-  };
-
-  const handleSendWhatsApp = () => {
-    // Construct pre-filled WhatsApp message
-    const waText = `Hello Shree Sharada Kalika Academy! I am interested in admission for 2026–27.
+    // Construct pre-filled WhatsApp message – NO year referential bounds
+    const waText = `Hello Shree Sharada Kalika Academy! I am interested in admission.
 *Student:* ${studentName}
 *Parent:* ${parentName}
 *Class:* ${className}
@@ -73,7 +81,22 @@ export default function AdmissionForm() {
 
     const encoded = encodeURIComponent(waText);
     const url = `https://wa.me/917899411128?text=${encoded}`;
+    
+    // Direct trigger to WhatsApp
     window.open(url, '_blank', 'noopener,noreferrer');
+
+    // Immediately clean the form
+    setStudentName('');
+    setParentName('');
+    setClassName('10th Standard');
+    setPhone('');
+    setMessage('');
+    
+    // Show visual confirmation on the form
+    setShowDirectSuccessToast(true);
+    setTimeout(() => {
+      setShowDirectSuccessToast(false);
+    }, 5000);
   };
 
   const handleResetForm = () => {
@@ -83,6 +106,7 @@ export default function AdmissionForm() {
     setPhone('');
     setMessage('');
     setSubmitted(false);
+    setShowDirectSuccessToast(false);
   };
 
   return (
@@ -100,7 +124,7 @@ export default function AdmissionForm() {
             <div className="space-y-4">
               <span className="text-[11px] font-bold text-amber-400 tracking-widest uppercase block flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-                ADMISSIONS OPEN FOR 2026–27
+                ADMISSIONS OPEN FOR NEW BATCH
               </span>
               <h2 className="text-3xl md:text-5xl font-extrabold font-display leading-[1.15]">
                 Give Your Child <br />
@@ -156,15 +180,14 @@ export default function AdmissionForm() {
               <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-amber-400 via-red-600 to-indigo-600" />
               
               <AnimatePresence mode="wait">
-                {!submitted ? (
-                  <motion.form
-                    key="form"
-                    onSubmit={handleSubmit}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="space-y-4 text-left"
-                  >
+                <motion.form
+                  key="form"
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="space-y-4 text-left"
+                >
                     <div className="flex items-center gap-2 mb-4 border-b border-slate-100 pb-4">
                       <ClipboardList className="w-5 h-5 text-indigo-600" />
                       <div>
@@ -250,62 +273,36 @@ export default function AdmissionForm() {
                       />
                     </div>
 
+                    {/* Toast Notification Alert when direct submitted to WhatsApp */}
+                    <AnimatePresence>
+                      {showDirectSuccessToast && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10, height: 0 }}
+                          animate={{ opacity: 1, y: 0, height: 'auto' }}
+                          exit={{ opacity: 0, y: -10, height: 0 }}
+                          className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-start gap-2.5 text-[#0a2342]"
+                        >
+                          <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                          <div className="text-left">
+                            <span className="block text-xs font-bold font-sans">Inquiry Dispatched on WhatsApp!</span>
+                            <span className="block text-[11px] text-slate-600 font-sans mt-0.5 leading-relaxed">
+                              We have directed your structured inputs onto our Chat Support lines. Your form is now clean for further queries.
+                            </span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
                     {/* Action buttons inside form */}
                     <button
                       type="submit"
                       className="w-full bg-[#0a2342] hover:bg-[#07192f] text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-[#0a2342]/20 flex items-center justify-center gap-2 transform active:scale-[0.98] transition-all cursor-pointer text-sm"
                     >
                       <Send className="w-4 h-4" />
-                      Submit Inquiry
+                      Submit Inquiry & Chat on WhatsApp
                     </button>
                   </motion.form>
-                ) : (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex flex-col items-center justify-center py-10 space-y-6 text-center"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-emerald-150 bg-emerald-50 text-emerald-500 border border-emerald-200 flex items-center justify-center">
-                      <CheckCircle className="w-10 h-10 fill-emerald-500 text-white" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <h4 className="font-display font-extrabold text-2xl text-slate-900">Inquiry Logged Successfully!</h4>
-                      <p className="text-xs text-slate-500 font-sans max-w-md">
-                        Thank you for reaching out to Shree Sharada Kalika Academy. Your information has been logged securely in our client database records.
-                      </p>
-                    </div>
-
-                    {/* Log details card */}
-                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 w-full text-left space-y-2 text-xs md:text-sm font-sans">
-                      <div><strong className="text-[#0a2342]">Student:</strong> {studentName}</div>
-                      <div><strong className="text-[#0a2342]">Class:</strong> {className}</div>
-                      <div><strong className="text-[#0a2342]">Parent:</strong> {parentName}</div>
-                      <div><strong className="text-[#0a2342]">Phone:</strong> {phone}</div>
-                      {message && <div><strong className="text-[#0a2342]">Message:</strong> {message}</div>}
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-3 w-full">
-                      <button
-                        onClick={handleSendWhatsApp}
-                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10 cursor-pointer"
-                      >
-                        <MessageSquare className="w-4.5 h-4.5 fill-white text-emerald-600" />
-                        Send on WhatsApp
-                      </button>
-
-                      <button
-                        onClick={handleResetForm}
-                        className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 px-4 rounded-xl border border-slate-300 transition-colors cursor-pointer"
-                      >
-                        New Inquiry
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                </AnimatePresence>
 
             </div>
           </div>

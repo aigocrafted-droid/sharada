@@ -12,6 +12,7 @@ import ClassesAndSubjects from './components/ClassesAndSubjects';
 import TeachingStyle from './components/TeachingStyle';
 import Facilities from './components/Facilities';
 import StudentJourney from './components/StudentJourney';
+import SmartQuiz from './components/SmartQuiz';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import AdmissionForm from './components/AdmissionForm';
@@ -50,6 +51,9 @@ export default function App() {
 
         {/* 9. Visual Student Achievements & Learning roadmaps */}
         <StudentJourney />
+
+        {/* Challenge Interactive Smart Quiz Game Playground */}
+        <SmartQuiz />
 
         {/* 10. Sliding Reviews Container */}
         <Testimonials />
