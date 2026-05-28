@@ -1,0 +1,6 @@
+{
+  "name": "Shree Sharada Kalika Academy",
+  "description": "Premium modern tuition academy in Chitradurga for 6th to 10th standard students. Science, Mathematics, Kannada, English, and Computer Science coaching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
