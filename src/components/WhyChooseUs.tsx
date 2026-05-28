@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
             </p>
           </div>
           <a
-            href={CONTACT_INFO.whatsappUrl}
+            href={CONTACT_INFO.whatsappUrlQuery}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg shadow-amber-450/10 shrink-0 flex items-center gap-2 text-sm"

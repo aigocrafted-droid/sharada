@@ -65,7 +65,7 @@ export default function FloatingButtons() {
       {/* 2. Floating WhatsApp inquiry support on the bottom-right */}
       <div className="pointer-events-auto">
         <motion.a
-          href={CONTACT_INFO.whatsappUrl}
+          href={CONTACT_INFO.whatsappUrlHelp}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ scale: 0.9 }}

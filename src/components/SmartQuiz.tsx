@@ -268,6 +268,20 @@ export default function SmartQuiz() {
   const [studentName, setStudentName] = useState('');
   const [isSubmittedToLeaderboard, setIsSubmittedToLeaderboard] = useState(false);
 
+  // Load leaderboard from localStorage at mount
+  useEffect(() => {
+    try {
+      const savedLeaderboard = localStorage.getItem('sska_quiz_leaderboard');
+      if (savedLeaderboard) {
+        setLeaderboard(JSON.parse(savedLeaderboard));
+      } else {
+        localStorage.setItem('sska_quiz_leaderboard', JSON.stringify(INITIAL_MOCK_LEADERBOARD));
+      }
+    } catch (e) {
+      console.error("Local storage lookup for leaderboard failed.", e);
+    }
+  }, []);
+
   // Initialize and select questions based on configuration
   const startNewQuiz = (isDailySpeedrun: boolean = false) => {
     setUseDailyChallengeMode(isDailySpeedrun);
@@ -384,10 +398,18 @@ export default function SmartQuiz() {
       grade: `${selectedGrade === 'All' ? 'Mixed' : selectedGrade} Std`,
       score: `${correctCount}/${currentQuestions.length}`,
       percentage: finalPct,
-      date: 'Just Now'
+      date: 'Today'
     };
     
-    setLeaderboard(prev => [newEntry, ...prev].sort((a,b) => b.percentage - a.percentage));
+    setLeaderboard(prev => {
+      const updated = [newEntry, ...prev].sort((a,b) => b.percentage - a.percentage);
+      try {
+        localStorage.setItem('sska_quiz_leaderboard', JSON.stringify(updated));
+      } catch (err) {
+        console.error("Failed to save leaderboard score.", err);
+      }
+      return updated;
+    });
     setIsSubmittedToLeaderboard(true);
     setStudentName('');
   };

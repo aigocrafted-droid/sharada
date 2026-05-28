@@ -141,7 +141,7 @@ export default function Footer() {
 
               {/* Direct query anchor */}
               <a
-                href={CONTACT_INFO.whatsappUrl}
+                href={CONTACT_INFO.whatsappUrlGeneral}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-white transition-colors uppercase tracking-wider"

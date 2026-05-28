@@ -106,7 +106,7 @@ export default function Navbar() {
               Enroll Now
             </a>
             <a
-              href={CONTACT_INFO.whatsappUrl}
+              href={CONTACT_INFO.whatsappUrlGeneral}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-amber-400 hover:bg-amber-500 text-[#0a2342] font-semibold text-sm px-4 py-2.5 rounded-full shadow-md shadow-amber-400/10 flex items-center gap-1.5 transition-all duration-300 whitespace-nowrap"
@@ -166,7 +166,7 @@ export default function Navbar() {
                   Enroll Now
                 </a>
                 <a
-                  href={CONTACT_INFO.whatsappUrl}
+                  href={CONTACT_INFO.whatsappUrlGeneral}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-center bg-amber-400 text-[#0a2342] font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2"

@@ -95,7 +95,7 @@ export default function ContactMap() {
                 <p className="text-[11px] text-slate-500 font-sans">Reach our support team online for direct help.</p>
               </div>
               <a
-                href={CONTACT_INFO.whatsappUrl}
+                href={CONTACT_INFO.whatsappUrlQuery}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl flex items-center gap-1.5 text-xs shadow-md shadow-emerald-500/10 cursor-pointer"
