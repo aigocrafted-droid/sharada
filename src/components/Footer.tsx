@@ -37,7 +37,8 @@ export default function Footer() {
     { name: 'Kannada Literature & Grammar' },
     { name: 'Communicative English' },
     { name: 'Analytical Mathematics' },
-    { name: 'Practical Computer Science' }
+    { name: 'Concept-based Science' },
+    { name: 'Interactive Social Science' }
   ];
 
   return (

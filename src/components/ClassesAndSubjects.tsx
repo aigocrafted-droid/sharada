@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { GraduationCap, BookOpen, ChevronRight, Binary, Award, CheckCircle2, Languages, Sigma } from 'lucide-react';
+import { GraduationCap, BookOpen, ChevronRight, Award, CheckCircle2, Languages, Sigma, FlaskConical, Globe } from 'lucide-react';
 import { CLASSES_OFFERED, SUBJECTS_OFFERED, ASSETS } from '../types';
 
 export default function ClassesAndSubjects() {
@@ -15,8 +15,10 @@ export default function ClassesAndSubjects() {
         return <BookOpen className="w-8 h-8 text-blue-500" />;
       case 'sub_maths':
         return <Sigma className="w-8 h-8 text-emerald-500" />;
-      case 'sub_cs':
-        return <Binary className="w-8 h-8 text-violet-500" />;
+      case 'sub_science':
+        return <FlaskConical className="w-8 h-8 text-violet-500" />;
+      case 'sub_social':
+        return <Globe className="w-8 h-8 text-amber-600" />;
       default:
         return <GraduationCap className="w-8 h-8 text-amber-500" />;
     }
@@ -30,8 +32,10 @@ export default function ClassesAndSubjects() {
         return ['Spoken Fluency', 'Parts of Speech & Tenses', 'Academic Comprehension', 'Creative Vocabulary'];
       case 'sub_maths':
         return ['Algebra & Geometry Triggers', 'Arithmetic Practice', 'Board-centric Key Formulas', 'Weekly Speed Drills'];
-      case 'sub_cs':
-        return ['Hands-on fundamental operations', 'Logo, Scratch, HTML Basics', 'Information Tech Fundamentals', 'Hardware & Office suite practice'];
+      case 'sub_science':
+        return ['Physics concept clarity', 'Chemical Reactions & Equations', 'Biology & Diagram practice', 'Periodic table & Numericals'];
+      case 'sub_social':
+        return ['National Freedom Movements', 'Geography & Map Pointing', 'Civics & Indian Democratic setup', 'Economics & Public development'];
       default:
         return [];
     }
@@ -152,7 +156,7 @@ export default function ClassesAndSubjects() {
                 {/* Media Image Banner for Subjects */}
                 <div className="h-44 relative bg-slate-900">
                   <img
-                    src={sub.id === 'sub_cs' ? ASSETS.computerLab : sub.id === 'sub_maths' ? ASSETS.mathematics : ASSETS.classroom}
+                    src={sub.id === 'sub_science' ? ASSETS.computerLab : sub.id === 'sub_maths' ? ASSETS.mathematics : ASSETS.classroom}
                     alt={sub.name}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-center brightness-90 shadow-inner"

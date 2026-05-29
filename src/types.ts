@@ -262,10 +262,16 @@ export const SUBJECTS_OFFERED: SubjectOffered[] = [
     color: "from-emerald-500 to-teal-500"
   },
   {
-    id: "sub_cs",
-    name: "Computer Science",
-    description: "Practical computer learning, basic programming understanding, computer fundamentals, and digital skills.",
+    id: "sub_science",
+    name: "Science",
+    description: "Core concepts of Physics, Chemistry, and Biology, simple visual explanations, and numerical solving practice.",
     color: "from-violet-500 to-fuchsia-400"
+  },
+  {
+    id: "sub_social",
+    name: "Social Science",
+    description: "History, Geography, Civics, and Economics made simple using interactive outlines, maps, and timeline stories.",
+    color: "from-amber-600 to-orange-500"
   }
 ];
 
@@ -406,7 +412,7 @@ export const FAQ_LIST: FAQItem[] = [
   {
     id: 2,
     question: "Which subjects are available?",
-    answer: "We teach Kannada, English, Mathematics, and Computer Science."
+    answer: "We teach Kannada, English, Mathematics, Science, and Social Science."
   },
   {
     id: 3,

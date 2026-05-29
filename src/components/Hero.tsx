@@ -91,7 +91,7 @@ export default function Hero() {
                 At Shree Sharada Kalika Academy, we believe every child has the potential to achieve academic excellence with the right guidance, practical learning, and continuous support. Our academy focuses not only on marks but also on real understanding, confidence, discipline, and long-term success.
               </p>
               <p className="border-l-2 border-amber-400/50 pl-4 bg-slate-900/40 py-2.5 pr-2 rounded-r-lg">
-                We provide expert coaching for Kannada, English, Mathematics, and Computer Science with individual attention, school homework follow-up, weekly assessments, and practical teaching methods that help students remember concepts for a longer time.
+                We provide expert coaching for Kannada, English, Mathematics, Science, and Social Science with individual attention, school homework follow-up, weekly assessments, and practical teaching methods that help students remember concepts for a longer time.
               </p>
             </motion.div>
 

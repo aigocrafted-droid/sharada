@@ -187,51 +187,98 @@ const QUESTION_POOL: Question[] = [
     explanation: 'To \"Expand\" means to make larger. Its exact opposite is \"Shrink\", which means to make or become smaller.'
   },
 
-  // Computer Science
+  // Science
   {
-    id: 'c1',
-    subject: 'Computer Science',
+    id: 'sc1',
+    subject: 'Science',
     gradeLevel: '6th',
-    questionText: 'What does CPU stand for?',
-    options: ['Computer Processing Unit', 'Central Processing Unit', 'Central Program Utility', 'Common Power Unit'],
-    correctAnswer: 'Central Processing Unit',
-    explanation: 'CPU is the Central Processing Unit, responsible for executing instructions and acting as the brain of the computer.'
+    questionText: 'Which gas do plants absorb during photosynthesis?',
+    options: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Hydrogen'],
+    correctAnswer: 'Carbon Dioxide',
+    explanation: 'Plants intake carbon dioxide and release oxygen during photosynthesis to manufacture glucose.'
   },
   {
-    id: 'c2',
-    subject: 'Computer Science',
+    id: 'sc2',
+    subject: 'Science',
     gradeLevel: '7th',
-    questionText: 'Which of the following acts as the brain of the computer?',
-    options: ['Keyboard', 'CPU', 'Hard Disk', 'RAM'],
-    correctAnswer: 'CPU',
-    explanation: 'The CPU (Central Processing Unit) processes commands and performs calculations, serving as the main brain.'
+    questionText: 'What is the chemical formula of water?',
+    options: ['CO2', 'H2O', 'NaCl', 'O2'],
+    correctAnswer: 'H2O',
+    explanation: 'Water consists of two hydrogen atoms bonded to one oxygen atom, hence its formula is H2O.'
   },
   {
-    id: 'c3',
-    subject: 'Computer Science',
+    id: 'sc3',
+    subject: 'Science',
     gradeLevel: '8th',
-    questionText: 'What is the main purpose of RAM in a computer system?',
-    options: ['Permanent storage of files', 'Cooling down the graphics card', 'Temporary fast data storage for running apps', 'Printing physical worksheets'],
-    correctAnswer: 'Temporary fast data storage for running apps',
-    explanation: 'RAM (Random Access Memory) is a volatile memory that stores temporary progress while applications are actively running.'
+    questionText: 'Which organelle is known as the powerhouse of the cell?',
+    options: ['Nucleus', 'Mitochondria', 'Ribosome', 'Chloroplast'],
+    correctAnswer: 'Mitochondria',
+    explanation: 'Mitochondria generate chemical energy (ATP) for cellular processes, earning them the nickname powerhouse.'
   },
   {
-    id: 'c4',
-    subject: 'Computer Science',
+    id: 'sc4',
+    subject: 'Science',
     gradeLevel: '9th',
-    questionText: '1 Kilobyte (KB) is equal to how many bytes?',
-    options: ['1000 bytes', '1024 bytes', '512 bytes', '2048 bytes'],
-    correctAnswer: '1024 bytes',
-    explanation: 'In the binary memory system, 1 Kilobyte is precisely equal to 1024 bytes (2¹⁰).'
+    questionText: 'What is the SI unit of Force?',
+    options: ['Joule', 'Pascal', 'Newton', 'Watt'],
+    correctAnswer: 'Newton',
+    explanation: 'Named after Sir Isaac Newton, the Newton (N) is the SI unit of Force.'
   },
   {
-    id: 'c5',
-    subject: 'Computer Science',
+    id: 'sc5',
+    subject: 'Science',
     gradeLevel: '10th',
-    questionText: 'What does WWW stand for in a website address?',
-    options: ['World Wide Web', 'Windows Wide Network', 'Worldwide Wireless Web', 'Work Word Website'],
-    correctAnswer: 'World Wide Web',
-    explanation: 'WWW stands for World Wide Web, which is an information network created by Sir Tim Berners-Lee.'
+    questionText: 'Which acid is present in the human stomach to help digest food?',
+    options: ['Hydrochloric Acid', 'Sulphuric Acid', 'Nitric Acid', 'Acetic Acid'],
+    correctAnswer: 'Hydrochloric Acid',
+    explanation: 'Hydrochloric Acid (HCl) in the stomach assists in activating digestive enzymes to break down food proteins.'
+  },
+
+  // Social Science
+  {
+    id: 'ss1',
+    subject: 'Social Science',
+    gradeLevel: '6th',
+    questionText: 'Who was the founder of the Mauryan Empire in ancient India?',
+    options: ['Ashoka', 'Chandragupta Maurya', 'Samudragupta', 'Harsha'],
+    correctAnswer: 'Chandragupta Maurya',
+    explanation: 'Chandragupta Maurya founded the Mauryan Empire in 322 BCE with the guidance of his advisor, Chanakya.'
+  },
+  {
+    id: 'ss2',
+    subject: 'Social Science',
+    gradeLevel: '7th',
+    questionText: 'Which is the longest river in the world?',
+    options: ['Amazon River', 'Nile River', 'Ganga River', 'Mississippi River'],
+    correctAnswer: 'Nile River',
+    explanation: 'The Nile River in Africa is the longest river globally, stretching over 6,650 kilometers.'
+  },
+  {
+    id: 'ss3',
+    subject: 'Social Science',
+    gradeLevel: '8th',
+    questionText: 'When did India gain independence from British rule?',
+    options: ['August 15, 1947', 'January 26, 1950', 'August 15, 1948', 'October 2, 1947'],
+    correctAnswer: 'August 15, 1947',
+    explanation: 'India achieved complete independence from British rule on August 15, 1947.'
+  },
+  {
+    id: 'ss4',
+    subject: 'Social Science',
+    gradeLevel: '9th',
+    questionText: 'Who is known as the Father of the Indian Constitution?',
+    options: ['Mahatma Gandhi', 'Dr. B.R. Ambedkar', 'Jawaharlal Nehru', 'Sardar Vallabhbhai Patel'],
+    correctAnswer: 'Dr. B.R. Ambedkar',
+    explanation: 'Dr. Bhimrao Ramji Ambedkar served as the Chairman of the Drafting Committee and is recognized as the Father of the Indian Constitution.'
+  },
+  {
+    id: 'ss5',
+    subject: 'Social Science',
+    gradeLevel: '10th',
+    questionText: 'Which Indian state is famously called the "Land of the Five Rivers"?',
+    options: ['Punjab', 'Haryana', 'Karnataka', 'Uttar Pradesh'],
+    correctAnswer: 'Punjab',
+    explanation: 'Punjab receives its name from the Persian words "Panj" (five) and "Aab" (water), signifying the land of five rivers (Beas, Chenab, Jhelum, Ravi, and Sutlej).'
   }
 ];
 
@@ -415,7 +462,7 @@ export default function SmartQuiz() {
   };
 
   // Subject list config helpers
-  const subjects = ['Mixed Subjects', 'Kannada', 'English', 'Mathematics', 'Computer Science'];
+  const subjects = ['Mixed Subjects', 'Kannada', 'English', 'Mathematics', 'Science', 'Social Science'];
   const grades = ['All', '6th', '7th', '8th', '9th', '10th'];
   
   // Motivational details based on results percentage
