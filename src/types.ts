@@ -71,10 +71,10 @@ export const ASSETS = {
   logo: logoImg,
   classroom: classroomImg,
   computerLab: computerLabImg,
-  aboutPlaceholder: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80", // secondary about us
-  mathematics: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
-  successImg: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80", // happy graduates
-  parentTrust: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" // parental advice/consultation
+  aboutPlaceholder: classroomImg, // Use real local Indian classroom learning photo
+  mathematics: classroomImg,       // Use real local Indian classroom learning photo
+  successImg: computerLabImg,     // Use real local Indian computer lab/science students photo
+  parentTrust: classroomImg        // Use real local Indian classroom learning photo
 };
 
 // Website contact links and numbers
@@ -84,7 +84,7 @@ export const CONTACT_INFO = {
   whatsappUrl: "https://wa.me/917899411128?text=Hello%20Shree%20Sharada%20Kalika%20Academy!%20I%20am%20interested%20in%20enquiring%20about%20admissions%20for%20the%20new%20batch%20of%206th-10th%20Standard.",
   whatsappUrlGeneral: "https://wa.me/917899411128?text=Hello%20Shree%20Sharada%20Kalika%20Academy!%20I%20am%20interested%20in%20enquiring%20about%20admissions%20for%20the%20new%20batch%20of%206th-10th%20Standard.",
   whatsappUrlDemo: "https://wa.me/917899411128?text=Hello%20Shree%20Sharada%20Kalika%20Academy!%20I%20would%20like%20to%20book%20a%20free%20demo%20class.",
-  whatsappUrlQuery: "https://wa.me/917899411128?text=Hello%20Shree%20Sharada%20Kalika%20Academy!%20I%20have%20an%20enquiry%20regarding%20weekly%20tests%20and%20your%20coaching%2520schedule.",
+  whatsappUrlQuery: "https://wa.me/917899411128?text=Hello%20Shree%20Sharada%20Kalika%20Academy!%20I%20have%20an%20enquiry%20regarding%20weekly%20tests%20and%20your%20coaching%20schedule.",
   whatsappUrlHelp: "https://wa.me/917899411128?text=Hello%20Shree%20Sharada%20Kalika%20Academy!%20I%20need%20help%20joining%2Fenrolling%20my%20child.",
   address: "Near Kindergarten School, Near District Court, Turuvanur Rd, VTG, Chitradurga, Karnataka – 577501",
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.6056554876613!2d76.3985!3d14.2251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDEzJzMwLjQiTiA3Nis0Nyc1NC42IkU!5e0!3m2!1sen!2sin!4v1716912345678!5m2!1sen!2sin", // dynamic map coordinate fallback

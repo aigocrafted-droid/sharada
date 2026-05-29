@@ -315,7 +315,7 @@ export default function SmartQuiz() {
   const [studentName, setStudentName] = useState('');
   const [isSubmittedToLeaderboard, setIsSubmittedToLeaderboard] = useState(false);
 
-  // Load leaderboard from localStorage at mount
+  // Load leaderboard from localStorage at mount and run a live competitive simulation
   useEffect(() => {
     try {
       const savedLeaderboard = localStorage.getItem('sska_quiz_leaderboard');
@@ -323,10 +323,57 @@ export default function SmartQuiz() {
         setLeaderboard(JSON.parse(savedLeaderboard));
       } else {
         localStorage.setItem('sska_quiz_leaderboard', JSON.stringify(INITIAL_MOCK_LEADERBOARD));
+        setLeaderboard(INITIAL_MOCK_LEADERBOARD);
       }
     } catch (e) {
       console.error("Local storage lookup for leaderboard failed.", e);
     }
+
+    // Dynamic Live Simulation: Periodically simulate local candidates submitting high scores from Chitradurga schools
+    const candidateNames = [
+      'Darshan S. (Turuvanur)', 'Sahana (Hosadurga Road)', 'Karthik R. (VTG)', 'Nikitha M. (Near Court)', 
+      'Prajwal K.M.', 'Ananya Gowda', 'Ravi Teja (Chitradurga)', 'Bhumika S.', 'Shashank V.', 'Priyanka Naik', 
+      'Tejas C.S.', 'Varun Hiremath', 'Chethan Kumar', 'Manoj K.S.', 'Deepika S.', 'Likhith Raj'
+    ];
+    const gradesList = ['6th Std', '7th Std', '8th Std', '9th Std', '10th Std'];
+    const scoresPool = [
+      { score: '5/5', percentage: 100 },
+      { score: '5/5', percentage: 100 },
+      { score: '4/5', percentage: 80 },
+      { score: '4/5', percentage: 80 },
+      { score: '3/5', percentage: 60 }
+    ];
+
+    const simInterval = setInterval(() => {
+      // 40% chance of a new entry submission every 15 seconds
+      if (Math.random() < 0.4) {
+        const randomName = candidateNames[Math.floor(Math.random() * candidateNames.length)];
+        const randomGrade = gradesList[Math.floor(Math.random() * gradesList.length)];
+        const choice = scoresPool[Math.floor(Math.random() * scoresPool.length)];
+        
+        const newPlayer = {
+          name: randomName,
+          grade: randomGrade,
+          score: choice.score,
+          percentage: choice.percentage,
+          date: 'Just Now'
+        };
+
+        setLeaderboard(prev => {
+          // Keep it lively, filter out old same name, prepend the new player, sort and slice to top 10
+          const filtered = prev.filter(p => p.name !== randomName);
+          const updated = [newPlayer, ...filtered].sort((a, b) => b.percentage - a.percentage).slice(0, 10);
+          try {
+            localStorage.setItem('sska_quiz_leaderboard', JSON.stringify(updated));
+          } catch (err) {
+            console.error(err);
+          }
+          return updated;
+        });
+      }
+    }, 15000); // Trigger live updates every 15 seconds!
+
+    return () => clearInterval(simInterval);
   }, []);
 
   // Initialize and select questions based on configuration
